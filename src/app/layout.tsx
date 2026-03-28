@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
+import "./responsive.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations. Building high-performance web applications and premium landing pages.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/images/sparsh-yadav-full-stack-developer.jpg",
         width: 1200,
         height: 630,
         alt: "Sparsh Yadav Full Stack Developer Portfolio",
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
     description:
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations.",
     creator: "@Sparsh__Yadav",
-    images: ["/og-image.png"],
+    images: ["/images/sparsh-yadav-full-stack-developer.jpg"],
   },
   robots: {
     index: true,
@@ -75,6 +76,8 @@ export const metadata: Metadata = {
   },
 };
 
+import Navbar from "@/components/Navbar";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -86,6 +89,7 @@ export default function RootLayout({
       className={`${inter.variable} ${geistSans.variable} h-full antialiased`}
     >
       <body className="font-sans min-h-full flex flex-col bg-background text-primary">
+        <Navbar />
         {children}
       </body>
     </html>

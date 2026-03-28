@@ -1,0 +1,117 @@
+/* 
+  Senior Frontend Engineering: Responsive Overrides 
+  This file contains ONLY max-width media queries to enhance mobile/tablet 
+  viewports without modifying the existing desktop layout.
+*/
+
+/* 1. Global Reset & Overflow Protection */
+@media (max-width: 1024px) {
+  html, body {
+    overflow-x: hidden !important;
+    position: relative;
+    width: 100%;
+  }
+
+  /* Prevent any element from causing horizontal scroll */
+  * {
+    max-width: 100vw;
+  }
+}
+
+/* 2. Typography Scaling */
+@media (max-width: 768px) {
+  /* Section Headings */
+  .section-heading, .contact-headline {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  /* Subtitles */
+  h3.text-3xl, h3.text-4xl {
+    font-size: 1.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-heading, .contact-headline {
+    font-size: 2rem !important;
+  }
+}
+
+/* 3. Services Section Mobile Overrides */
+/* On mobile, descriptions should be visible since hover logic is unreliable */
+@media (max-width: 1024px) {
+  #services .group-hover\:opacity-0 {
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  #services .opacity-0 {
+    opacity: 1 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+    transform: none !important;
+  }
+
+  #services .flex-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* 3. Projects Section Mobile Conversion */
+/* Converts sticky scroll into a vertical stack for mobile/tablet */
+@media (max-width: 1024px) {
+  .project-block-container {
+    height: auto !important;
+    padding-bottom: 2rem;
+  }
+
+  .project-sticky-inner {
+    position: relative !important;
+    top: 0 !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: visible !important;
+  }
+
+  /* Target the specific layout divs inside ProjectBlock */
+  .project-sticky-inner > div {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+  }
+
+  /* Ensure text content is scrollable and not absolute */
+  .project-sticky-inner > div:first-child {
+    order: 2; /* Text below image for better mobile hierarchy */
+    padding-top: 1rem !important;
+  }
+
+  /* Image container becomes Hero style */
+  .project-sticky-inner > div:last-child {
+    order: 1; /* Image on top */
+    aspect-ratio: 16 / 10 !important;
+    height: auto !important;
+    width: 100% !important;
+  }
+}
+
+/* 4. Footer & Grid Adjustments */
+@media (max-width: 768px) {
+  footer .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  /* Fix email overflow */
+  footer a.break-all {
+    word-break: break-all !important;
+  }
+}

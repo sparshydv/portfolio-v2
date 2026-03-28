@@ -41,8 +41,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <main className="flex flex-col min-h-screen">
-        <Hero />
-        <ProblemSolution />
+        <div className="relative w-full">
+          <Hero />
+          <ProblemSolution />
+        </div>
         <BeforeAfter />
         <Projects />
         <Services />

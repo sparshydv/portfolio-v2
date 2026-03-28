@@ -3,9 +3,9 @@ import type { MetadataRoute } from "next";
 const BASE_URL = "https://sparshyadav.dev";
 
 const projectSlugs = [
-  "ai-interview-platform",
-  "ecommerce-dashboard",
-  "saas-landing-page",
+  "linea",
+  "subtracker",
+  "gsap-experience",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
