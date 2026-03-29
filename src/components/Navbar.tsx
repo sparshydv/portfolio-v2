@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { PopupModal } from "react-calendly";
 import { Menu as MenuIcon, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { useLoading } from "@/context/LoadingContext";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -13,6 +15,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { appReady, introFinished } = useLoading();
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -22,6 +26,14 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  // Sync the reveal with the site intro
+  useEffect(() => {
+    if (appReady && introFinished) {
+      const timer = setTimeout(() => setShowNav(true), 400); // Slight delay for nice staggering
+      return () => clearTimeout(timer);
+    }
+  }, [appReady, introFinished]);
 
   // Hide the navbar on project case study pages
   if (pathname?.startsWith("/projects/")) {
@@ -29,7 +41,10 @@ export default function Navbar() {
   }
 
   return (
-    <header
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }}
+      animate={showNav ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
         scrolled 
@@ -123,6 +138,6 @@ export default function Navbar() {
           rootElement={document.body}
         />
       )}
-    </header>
+    </motion.header>
   );
 }

@@ -78,6 +78,7 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import TransitionProvider from "@/components/TransitionProvider";
+import { LoadingProvider } from "@/context/LoadingContext";
 
 export default function RootLayout({
   children,
@@ -90,10 +91,12 @@ export default function RootLayout({
       className={`${inter.variable} ${geistSans.variable} h-full antialiased`}
     >
       <body className="font-sans min-h-full flex flex-col bg-background text-primary antialiased">
-        <TransitionProvider>
+        <LoadingProvider>
           <Navbar />
-          {children}
-        </TransitionProvider>
+          <TransitionProvider>
+            {children}
+          </TransitionProvider>
+        </LoadingProvider>
       </body>
     </html>
   );

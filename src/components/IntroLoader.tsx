@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useLoading } from "@/context/LoadingContext";
 
 interface IntroLoaderProps {
   onComplete: () => void;
@@ -20,6 +21,7 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLHeadingElement>(null);
   const [index, setIndex] = useState(0);
+  const { setIntroFinished } = useLoading();
 
   useEffect(() => {
     if (!containerRef.current || !textRef.current) return;
@@ -31,7 +33,10 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
           opacity: 0,
           duration: 0.8,
           ease: "expo.inOut",
-          onComplete: onComplete
+          onComplete: () => {
+            setIntroFinished(true); // Global signal
+            onComplete(); // Local callback
+          }
         });
       }
     });
