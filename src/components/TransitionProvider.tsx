@@ -9,6 +9,11 @@ function TransitionContent({ children }: { children: React.ReactNode }) {
   const { appReady } = useLoading();
   const [introFinished, setIntroFinished] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Parallel double-check condition: reveal only when both are ready
   // This ensures the intro plays its full atmospheric sequence AND the 
@@ -22,6 +27,9 @@ function TransitionContent({ children }: { children: React.ReactNode }) {
       return () => clearTimeout(timer);
     }
   }, [introFinished, appReady]);
+
+  // Prevent hydration mismatch by only rendering after client-side mount
+  if (!mounted) return null;
 
   return (
     <>

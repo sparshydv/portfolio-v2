@@ -22,6 +22,8 @@ export default function IntroLoader({ onComplete }: IntroLoaderProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (!containerRef.current || !textRef.current) return;
+
     const tl = gsap.timeline({
       onComplete: () => {
         // Final fade out of the entire loader
