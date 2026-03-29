@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 export default function Projects() {
@@ -161,10 +162,13 @@ const ProjectBlock = ({ project, index }: { project: any, index: number }) => {
           <div className="w-full h-full md:h-full relative group md:p-0 p-4">
             <div className="w-full h-full relative rounded-none md:rounded-0 overflow-hidden border border-black/[0.05] md:border-0 bg-[#FAFAFA] shadow-sm md:shadow-none">
               <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-                <img 
+                <Image 
                   src={project.image} 
                   alt={`${project.title} - Sparsh Yadav Full Stack Developer`} 
-                  className="w-full h-full object-contain md:object-cover object-top"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  className="w-full h-full object-contain md:object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
                 />
               </a>
             </div>

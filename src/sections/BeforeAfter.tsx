@@ -6,13 +6,13 @@ import { motion } from "motion/react";
 
 const beforeStats = [
   { label: "Interface", value: "Poor UI", trend: "down" },
-  { label: "Load Speed", value: "3.4s", trend: "down" },
+  { label: "Load Speed", value: "2.4s", trend: "down" },
   { label: "Visibility", value: "Poor SEO", trend: "down" },
 ];
 
 const afterStats = [
   { label: "Interface", value: "Better UI", trend: "up" },
-  { label: "Load Speed", value: "1.2s", trend: "up" },
+  { label: "Load Speed", value: "0.8s", trend: "up" },
   { label: "Visibility", value: "Best SEO", trend: "up" },
 ];
 
@@ -63,6 +63,7 @@ export default function BeforeAfter() {
                 src="/images/legacy-website-before-transformation.png" 
                 alt="Before Transformation" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 600px"
                 className="object-contain transition-transform duration-700 group-hover:scale-105" 
               />
             </div>
@@ -126,6 +127,7 @@ export default function BeforeAfter() {
                 src="/images/modern-high-performance-web-after.png" 
                 alt="After Transformation" 
                 fill 
+                sizes="(max-width: 768px) 100vw, 600px"
                 className="object-contain transition-transform duration-700 group-hover:scale-105" 
               />
             </div>

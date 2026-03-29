@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Code2, Palette, Globe, Zap, Layers, Server } from "lucide-react";
 import { PopupModal } from "react-calendly";
+import { useLoading } from "@/context/LoadingContext";
 
 const leftSkills = [
   { icon: Palette, label: "UI/UX Design", mobileLabel: "UI/UX" },
@@ -33,9 +34,13 @@ export default function Hero() {
   const [mounted, setMounted] = useState(false);
   const [calOpen, setCalOpen] = useState(false);
 
+  const { setAppReady } = useLoading();
+
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Signal to the TransitionProvider that the critical content (Hero) is ready
+    setAppReady(true);
+  }, [setAppReady]);
 
   if (!mounted) return <div className="h-screen bg-[#FAFAFA]" />;
 
@@ -150,38 +155,33 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative flex-shrink-0"
         >
-          {/* Animated orange glow behind image */}
           <motion.div
             animate={{ 
               scale: [1, 1.08, 1],
               opacity: [0.25, 0.4, 0.25],
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -inset-8 md:-inset-12 rounded-[4rem] bg-gradient-to-br from-[#f07b1a]/20 via-[#ff9a44]/15 to-[#f07b1a]/10 blur-[40px] z-0"
+            className="absolute -inset-8 md:-inset-12 rounded-[4rem] bg-gradient-to-br from-[#f07b1a]/20 via-[#ff9a44]/15 to-[#f07b1a]/10 blur-[25px] md:blur-[40px] z-0 [will-change:transform]"
           />
           
-          {/* Secondary glow pulse */}
           <motion.div
             animate={{ 
               scale: [1.05, 1.15, 1.05],
               opacity: [0.1, 0.2, 0.1],
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -inset-16 md:-inset-20 rounded-[5rem] bg-gradient-to-tl from-[#f0a54e]/10 via-transparent to-[#f07b1a]/10 blur-[50px] z-0"
+            className="absolute -inset-16 md:-inset-20 rounded-[5rem] bg-gradient-to-tl from-[#f0a54e]/10 via-transparent to-[#f07b1a]/10 blur-[30px] md:blur-[50px] z-0 [will-change:transform]"
           />
 
-          {/* Rotating gradient ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -inset-5 z-0 pointer-events-none"
+          <div
+            className="absolute -inset-5 z-0 pointer-events-none [will-change:transform] md:[animation:spin_20s_linear_infinite]"
           >
             <div className="w-full h-full rounded-[3.2rem] border-2 border-transparent" 
               style={{
                 background: "linear-gradient(#FAFAFA, #FAFAFA) padding-box, linear-gradient(135deg, #f07b1a 0%, transparent 30%, transparent 70%, #f0a54e 100%) border-box",
               }}
             />
-          </motion.div>
+          </div>
           
           {/* Decorative static rings */}
           <div className="absolute -inset-3 rounded-[3rem] border border-[#f07b1a]/10 z-0 pointer-events-none" />

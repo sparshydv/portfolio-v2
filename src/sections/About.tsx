@@ -2,6 +2,7 @@
 import React from "react";
 import { Twitter, Linkedin, Github, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const LeetCodeIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
@@ -112,10 +113,13 @@ export default function About() {
 
           {/* Portrait */}
           <div className="relative w-full max-w-[300px] lg:max-w-[340px] aspect-[3/4] rounded-2xl overflow-hidden shadow-xl shadow-black/10">
-            <img
+            <Image
               src="/images/sparsh-yadav-software-engineer-portrait.jpeg"
               alt="Sparsh Yadav Full Stack Developer Portfolio"
+              fill
+              sizes="(max-width: 768px) 100vw, 340px"
               className="w-full h-full object-cover object-[center_top]"
+              loading="lazy"
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
