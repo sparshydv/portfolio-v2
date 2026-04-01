@@ -9,7 +9,7 @@ const services = [
   {
     number: "01",
     icon: Layers,
-    title: "UI/UX Transformations",
+    title: "UI/UX | Transformations",
     description:
       "Modern, responsive, high-performance interfaces. Pixel-precise implementations that work across every device and feel premium at every breakpoint.",
     tags: ["React", "Tailwind", "Framer Motion", "GSAP"],
@@ -17,7 +17,7 @@ const services = [
   {
     number: "02",
     icon: Globe,
-    title: "Web Application Development",
+    title: "Web App | Development",
     description:
       "Custom full-stack apps built for scalability and performance. From architecture decisions to deployment, every layer is built with intent.",
     tags: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
@@ -25,7 +25,7 @@ const services = [
   {
     number: "03",
     icon: Zap,
-    title: "Startup MVP Development",
+    title: "Startup MVP | Development",
     description:
       "Turn your idea into a working product quickly. I cut unnecessary complexity and build only what you need to get to market and start learning.",
     tags: ["Rapid Build", "Lean Stack", "Ship Fast", "Lovable"],
@@ -33,7 +33,7 @@ const services = [
   {
     number: "04",
     icon: BarChart3,
-    title: "Performance Optimization",
+    title: "Performance | Optimization",
     description:
       "Improve speed, reduce server load, and optimize API usage. Real performance gains measured in Core Web Vitals — not just impressions.",
     tags: ["Core Web Vitals", "Caching", "API Tuning"],
@@ -89,8 +89,13 @@ export default function Services() {
                     <Icon className="w-7 h-7" />
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#111] tracking-tight group-hover:text-[#f07b1a] transition-colors duration-300">
-                    {svc.title}
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#111] tracking-tight group-hover:text-[#f07b1a] transition-colors duration-300 leading-[1.1] md:leading-tight">
+                    {svc.title.split(" | ").map((part, i) => (
+                      <span key={i} className="block md:inline">
+                        {part}
+                        {i === 0 && <span className="hidden md:inline"> </span>}
+                      </span>
+                    ))}
                   </h3>
                 </div>
 

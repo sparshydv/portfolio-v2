@@ -18,8 +18,8 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sparshyadav.dev"),
   title: {
-    default: "Sparsh Yadav | Full Stack Developer",
-    template: "%s | Sparsh Yadav",
+    default: "SY — Sparsh Yadav | Full Stack Developer",
+    template: "SY — %s | Sparsh Yadav",
   },
   description:
     "Sparsh Yadav is a Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations. Building high-performance web applications and premium landing pages.",
@@ -40,25 +40,25 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://sparshyadav.dev",
     siteName: "Sparsh Yadav — Portfolio",
-    title: "Sparsh Yadav | Full Stack Developer",
+    title: "SY — Sparsh Yadav | Full Stack Developer",
     description:
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations. Building high-performance web applications and premium landing pages.",
     images: [
       {
-        url: "/images/sparsh-yadav-full-stack-developer.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Sparsh Yadav Full Stack Developer Portfolio",
+        alt: "Sparsh Yadav | Full Stack Developer Branding",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sparsh Yadav | Full Stack Developer",
+    title: "SY — Sparsh Yadav | Full Stack Developer",
     description:
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations.",
     creator: "@Sparsh__Yadav",
-    images: ["/images/sparsh-yadav-full-stack-developer.jpg"],
+    images: ["/opengraph-image.png"],
   },
   robots: {
     index: true,
@@ -73,6 +73,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://sparshyadav.dev",
+  },
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
 };
 

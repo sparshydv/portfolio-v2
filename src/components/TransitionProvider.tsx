@@ -9,6 +9,7 @@ export default function TransitionProvider({ children }: { children: React.React
   const { appReady } = useLoading();
   const [introFinished, setIntroFinished] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [revealComplete, setRevealComplete] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -44,6 +45,10 @@ export default function TransitionProvider({ children }: { children: React.React
            initial={{ opacity: 0, scale: 1.05, filter: "blur(25px)" }}
            animate={showContent ? { opacity: 1, scale: 1, filter: "blur(0px)" } : { opacity: 0, scale: 1.05, filter: "blur(25px)" }}
            transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1] }}
+           onAnimationComplete={() => {
+             if (showContent) setRevealComplete(true);
+           }}
+           style={revealComplete ? { filter: "none" } : {}}
           className="flex flex-col min-h-screen"
         >
           {children}

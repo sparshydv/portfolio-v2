@@ -3,8 +3,14 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import Link from "next/link";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { useLoading } from "@/context/LoadingContext";
+
+// Import images for automatic Blur-to-HD placeholders
+import LineaImg from "../../public/images/linea-ecommerce-case-study-sparsh-yadav.png";
+import SubTrackerImg from "../../public/images/subtracker-subscription-management-backend.png";
+import AppleImg from "../../public/images/apple-style-gsap-animation-showcase.png";
 
 export default function Projects() {
   const projects = [
@@ -16,7 +22,7 @@ export default function Projects() {
       description: "A full-stack e-commerce system engineered with real-world business logic, including authentication, cart management, and order processing. Designed to handle end-to-end user journeys with seamless checkout flows and scalable backend services.",
       link: "https://linea-ecommerce.vercel.app",
       caseStudyLink: "/projects/linea",
-      image: "/images/linea-ecommerce-case-study-sparsh-yadav.png"
+      image: LineaImg
     },
     {
       id: "02",
@@ -26,7 +32,7 @@ export default function Projects() {
       description: "A production-grade subscription management system designed to track, analyze, and optimize recurring expenses. Built with scalable backend architecture, automated workflows, and intelligent alerts to reduce unnecessary spending.",
       link: "https://subtracker-self.vercel.app",
       caseStudyLink: "/projects/subtracker",
-      image: "/images/subtracker-subscription-management-backend.png"
+      image: SubTrackerImg
     },
     {
       id: "03",
@@ -36,7 +42,7 @@ export default function Projects() {
       description: "A high-performance, animation-driven web experience built using GSAP and Three.js. Focused on immersive storytelling through scroll-based animations, 3D rendering, and premium UI interactions.",
       link: "https://macbook-gsap-phi.vercel.app/",
       caseStudyLink: "/projects/gsap-experience",
-      image: "/images/apple-style-gsap-animation-showcase.png"
+      image: AppleImg
     }
   ];
 
@@ -76,6 +82,19 @@ const ProjectBlock = ({ project, index }: { project: any, index: number }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const { introFinished } = useLoading();
+  const [useHighRes, setUseHighRes] = useState(false);
+
+  // Silent Upgrade: Once the intro is fully revealed, we swap to 100% quality
+  useEffect(() => {
+    if (introFinished) {
+      // 1.5s delay after the reveal starts to give the user time to settle
+      const timer = setTimeout(() => {
+        setUseHighRes(true);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [introFinished]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -166,9 +185,13 @@ const ProjectBlock = ({ project, index }: { project: any, index: number }) => {
                   src={project.image} 
                   alt={`${project.title} - Sparsh Yadav Full Stack Developer`} 
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
-                  className="w-full h-full object-contain md:object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  sizes={useHighRes ? "100vw" : "(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 60vw"}
+                  quality={useHighRes ? 100 : 75}
+                  className={`w-full h-full object-contain md:object-cover object-top transition-all duration-1000 group-hover:scale-105 ${
+                    useHighRes ? "opacity-100" : "opacity-95 contrast-[1.02]"
+                  }`}
                   loading="lazy"
+                  placeholder="blur"
                 />
               </a>
             </div>

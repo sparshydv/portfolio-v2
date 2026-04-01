@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import PortraitImg from "../../public/images/sparsh-yadav-full-stack-developer.jpg";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Code2, Palette, Globe, Zap, Layers, Server } from "lucide-react";
@@ -190,12 +191,13 @@ export default function Hero() {
           {/* Image container */}
           <div className="relative w-[60vw] md:w-[240px] lg:w-[280px] xl:w-[320px] aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-[0_20px_60px_rgba(240,123,26,0.15)] z-10 ring-1 ring-white/50 group/img cursor-pointer">
             <Image
-              src="/images/sparsh-yadav-full-stack-developer.jpg"
+              src={PortraitImg}
               alt="Sparsh Yadav Full Stack Developer"
               fill
-              sizes="(max-width: 768px) 60vw, 320px"
+              sizes="(max-width: 768px) 80vw, 640px"
               className="object-cover object-top transition-transform duration-500 group-hover/img:scale-105"
               priority
+              placeholder="blur"
             />
             {/* Subtle bottom gradient overlay for image blending */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/[0.08] via-transparent to-transparent" />

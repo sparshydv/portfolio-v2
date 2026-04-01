@@ -4,6 +4,7 @@ import { Twitter, Linkedin, Github, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import AboutPortrait from "../../public/images/sparsh-yadav-software-engineer-portrait.jpeg";
 
 const LeetCodeIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
   <img 
@@ -65,7 +66,14 @@ export default function About() {
             </p>
             <p>
               Behind this is a strong problem-solving foundation:{" "}
-              <span className="text-[#F97316] font-semibold">550+ DSA problems solved</span> —
+              <a 
+                href="https://leetcode.com/u/Sparsh_Yadav/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#F97316] font-semibold hover:underline decoration-[#F97316]/30 underline-offset-4 transition-all"
+              >
+                550+ LeetCode problems solved
+              </a> —
               shaping how I think about efficiency, trade-offs, and scalability.
             </p>
           </div>
@@ -114,12 +122,13 @@ export default function About() {
           {/* Portrait */}
           <div className="relative w-full max-w-[300px] lg:max-w-[340px] aspect-[3/4] rounded-2xl overflow-hidden shadow-xl shadow-black/10">
             <Image
-              src="/images/sparsh-yadav-software-engineer-portrait.jpeg"
+              src={AboutPortrait}
               alt="Sparsh Yadav Full Stack Developer Portfolio"
               fill
-              sizes="(max-width: 768px) 100vw, 340px"
+              sizes="(max-width: 768px) 100vw, 640px"
               className="w-full h-full object-cover object-[center_top]"
               loading="lazy"
+              placeholder="blur"
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
