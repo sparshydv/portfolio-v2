@@ -40,7 +40,7 @@ export default function Projects() {
       subtitle: "Interactive Product Experience",
       tags: ["[ THREE.JS ]", "[ GSAP ]", "[ TAILWIND CSS ]"],
       description: "A high-performance, animation-driven web experience built using GSAP and Three.js. Focused on immersive storytelling through scroll-based animations, 3D rendering, and premium UI interactions.",
-      link: "https://macbook-gsap-phi.vercel.app/",
+      link: "https://applestyle-gsap.vercel.app/",
       caseStudyLink: "/projects/gsap-experience",
       image: AppleImg
     }

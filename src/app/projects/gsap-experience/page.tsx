@@ -39,7 +39,7 @@ export default function GSAPCaseStudy() {
           <ArrowLeft className="w-4 h-4" /> All Projects
         </Link>
         <span className="text-xs font-bold tracking-widest uppercase text-[#999]">Case Study</span>
-        <a href="https://macbook-gsap-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-[#111111] hover:text-[#F97316] transition-colors">
+        <a href="https://applestyle-gsap.vercel.app/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-sm font-semibold text-[#111111] hover:text-[#F97316] transition-colors">
           View Experience <ExternalLink className="w-3.5 h-3.5" />
         </a>
       </nav>
@@ -70,10 +70,10 @@ export default function GSAPCaseStudy() {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <a href="https://macbook-gsap-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-7 py-3.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-orange-500/10">
+            <a href="https://applestyle-gsap.vercel.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#F97316] hover:bg-[#EA580C] text-white px-7 py-3.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-orange-500/10">
               View Experience <ArrowUpRight className="w-4 h-4" />
             </a>
-            <a href="https://github.com/sparshydv/macbook-gsap" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-black/15 hover:border-[#F97316] hover:text-[#F97316] text-[#111111] px-7 py-3.5 rounded-full text-sm font-semibold transition-all">
+            <a href="https://github.com/sparshydv/iphone15pro-landingpage" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-black/15 hover:border-[#F97316] hover:text-[#F97316] text-[#111111] px-7 py-3.5 rounded-full text-sm font-semibold transition-all">
               View Code <Github className="w-4 h-4" />
             </a>
           </div>
