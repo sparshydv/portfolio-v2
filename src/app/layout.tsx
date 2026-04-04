@@ -18,7 +18,7 @@ const geistSans = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL("https://sparshyadav.dev"),
   title: {
-    default: "SY — Sparsh Yadav | Full Stack Developer",
+    default: "Sparsh Yadav | Full Stack Developer",
     template: "SY — %s | Sparsh Yadav",
   },
   description:
