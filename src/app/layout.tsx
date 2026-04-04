@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://sparshyadav.dev",
     siteName: "Sparsh Yadav — Portfolio",
-    title: "SY — Sparsh Yadav | Full Stack Developer",
+    title: "Sparsh Yadav | Full Stack Developer",
     description:
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations. Building high-performance web applications and premium landing pages.",
     images: [
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SY — Sparsh Yadav | Full Stack Developer",
+    title: "Sparsh Yadav | Full Stack Developer",
     description:
       "Full Stack Developer specializing in Next.js, React, MERN stack, and GSAP animations.",
     creator: "@Sparsh__Yadav",
